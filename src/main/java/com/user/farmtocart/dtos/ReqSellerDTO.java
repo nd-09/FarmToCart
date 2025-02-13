@@ -4,11 +4,16 @@ public class ReqSellerDTO {
     private String name;
     private String email;
     private String phone;
+    private final String role="SELLER";
     private String address;
     private String city;
 
     public String getName() {
         return name;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public void setName(String name) {

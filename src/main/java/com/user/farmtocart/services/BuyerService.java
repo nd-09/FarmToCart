@@ -1,7 +1,6 @@
 package com.user.farmtocart.services;
 
 import com.user.farmtocart.models.Product;
-import com.user.farmtocart.repositories.BuyerRepository;
 import com.user.farmtocart.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +9,9 @@ import java.util.List;
 
 @Service
 public class BuyerService {
-    private final BuyerRepository buyerRepository;
     private final ProductRepository productRepository;
 
-    public BuyerService(BuyerRepository buyerRepository, ProductRepository productRepository) {
-        this.buyerRepository = buyerRepository;
+    public BuyerService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 

@@ -2,20 +2,20 @@ package com.user.farmtocart.dtos;
 
 import com.user.farmtocart.models.Gender;
 
-public class ReqBuyerDTO {
+public class UserDTO {
     private String name;
     private String email;
     private String phone;
+    private String password;
+    private String role;
+    private int age;
     private String address;
     private String city;
-    private final String role="BUYER";
-
-    public String getRole() {
-        return role;
-    }
-
-    private int age;
     private Gender gender;
+
+    public int getAge() {
+        return age;
+    }
 
     public Gender getGender() {
         return gender;
@@ -23,6 +23,10 @@ public class ReqBuyerDTO {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getName() {
@@ -49,6 +53,14 @@ public class ReqBuyerDTO {
         this.phone = phone;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -65,11 +77,11 @@ public class ReqBuyerDTO {
         this.city = city;
     }
 
-    public int getAge() {
-        return age;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
