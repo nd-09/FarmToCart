@@ -32,15 +32,11 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest authenticationRequest) throws BadCredentialsException {
         try {
-            System.out.println("inside try block?");
-            System.out.println("username and pass"+ authenticationRequest.getEmail()+ "and"+"password"+ authenticationRequest.getPassword());
 //            authenticationManager.authenticate(
 //                    new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
 //                            authenticationRequest.getPassword()));
             UserDetails userDetails = authService.loadUserByUsername(authenticationRequest.getEmail());
             boolean matches = passwordEncoder.matches(authenticationRequest.getPassword(), userDetails.getPassword());
-            System.out.println("Password Matches? " + matches);
-
        }catch (BadCredentialsException e) {
             throw new BadCredentialsException("Invalid username or password.");
        }

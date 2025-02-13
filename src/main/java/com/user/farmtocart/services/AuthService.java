@@ -15,7 +15,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,18 +33,15 @@ public class AuthService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        System.out.println("reaching to the service file??"+ email );
         Optional<Buyer> buyer = buyerRepository.findByEmail(email);
         Optional<Seller> seller = sellerRepository.findByEmail(email);
 
             if(buyer.isPresent()){
-                System.out.println("inside buyer?");
                 String password = buyer.get().getPassword();
                 String role=buyer.get().getRole();
                 List<GrantedAuthority> grantedAuthorities = List.of(new SimpleGrantedAuthority(role));
                 return new User(buyer.get().getEmail(), password, grantedAuthorities);
             }else if(seller.isPresent()){
-                System.out.println("inside seller?");
                 String username = seller.get().getEmail();
                 String password = seller.get().getPassword();
                 String role=seller.get().getRole();
